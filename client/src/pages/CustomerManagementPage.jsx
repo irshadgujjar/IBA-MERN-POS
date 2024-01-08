@@ -46,7 +46,7 @@ const InventoryPage = () => {
     const fetchAllInvoices = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/invoices/get-all-invoices"
+          "/api/invoices/get-all-invoices"
         );
         setInvoices(response.data.data);
       } catch (error) {
@@ -73,7 +73,7 @@ const InventoryPage = () => {
     try {
       // Call the server to generate an invoice for the selected customer
       const response = await axios.post(
-        "http://localhost:3000/api/invoices/add-invoice",
+        "/api/invoices/add-invoice",
         {
           customerId: customer.id,
         }
@@ -82,7 +82,7 @@ const InventoryPage = () => {
       if (response.status === 200) {
         // Refresh the list of invoices
         const updatedInvoices = await axios.get(
-          "http://localhost:3000/api/invoices/get-all-invoices"
+          "/api/invoices/get-all-invoices"
         );
         setInvoices(updatedInvoices.data.data);
       } else {

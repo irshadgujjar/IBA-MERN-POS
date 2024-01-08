@@ -21,7 +21,7 @@ const Login = () => {
   const onSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.post('http://localhost:3000/api/user/login', values);
+      const response = await axios.post('/api/user/login', values);
       dispatch({
         type: 'USER_LOGIN',
         token: response.data.token,
@@ -68,6 +68,7 @@ const Login = () => {
     validate,
   });
 
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
       {loading && (
@@ -118,7 +119,7 @@ const Login = () => {
           <div>
             <button
               type="submit"
-              className="w-full bg-slate-900 text-white py-3 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:border-indigo-500"
+              className="w-full bg-slate-900 text-white py-3 rounded-md hover:bg-slate-600 focus:outline-none focus:ring focus:border-indigo-500"
             >
               Sign in
             </button>

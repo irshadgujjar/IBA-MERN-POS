@@ -31,7 +31,8 @@ export default function ProductCatalogPage() {
 
   const getData = () => {
     axios
-      .get("http://localhost:3000/api/products/get-all-products")
+      .get("/api/products/get-all-products")
+      
       .then((response) => {
         setProducts(response.data.products);
         setLoading(false);
@@ -44,7 +45,7 @@ export default function ProductCatalogPage() {
 
   const deleteProduct = (productId) => {
     axios
-      .delete(`http://localhost:3000/api/products/delete-product/${productId}`)
+      .delete(`/api/products/delete-product/${productId}`)
       .then(() => {
         toast.success("Product deleted successfully!");
         getData();
@@ -64,7 +65,7 @@ export default function ProductCatalogPage() {
   const updateProduct = () => {
     axios
       .put(
-        `http://localhost:3000/api/products/update-product/${selectedProduct._id}`,
+        `/api/products/update-product/${selectedProduct._id}`,
         { ...formData, price: parseFloat(formData.price) }
       )
       .then(() => {
@@ -147,7 +148,7 @@ export default function ProductCatalogPage() {
     if (selectedProduct && selectedProduct._id) {
       axios
         .put(
-          `http://localhost:3000/api/products/update-product/${selectedProduct._id}`,
+          `/api/products/update-product/${selectedProduct._id}`,
           formData
         )
         .then(() => {
@@ -159,7 +160,7 @@ export default function ProductCatalogPage() {
         });
     } else {
       axios
-        .post("http://localhost:3000/api/products/create-product", {
+        .post("/api/products/create-product", {
           ...formData,
           price: parseFloat(formData.price),
         })

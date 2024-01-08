@@ -19,7 +19,7 @@ export default function Category() {
   useEffect(() => {
     const fetchData = () => {
       axios
-        .get("http://localhost:3000/api/categories/get-all-categories")
+        .get("/api/categories/get-all-categories")
         .then((response) => {
           setCategories(response.data.categories);
         })
@@ -33,7 +33,7 @@ export default function Category() {
 
   const deleteCategory = (_id) => {
     axios
-      .delete("http://localhost:3000/api/categories/delete-category", {
+      .delete("/api/categories/delete-category", {
         data: { _id },
       })
       .then(() => {
@@ -48,7 +48,7 @@ export default function Category() {
 
   const editCategory = (_id) => {
     axios
-      .get(`http://localhost:3000/api/categories/get-category-by-id?_id=${_id}`)
+      .get(`/api/categories/get-category-by-id?_id=${_id}`)
       .then((response) => {
         const category = response.data.category;
         setFormData({
@@ -66,7 +66,7 @@ export default function Category() {
   const saveCategory = () => {
     if (formData._id) {
       axios
-        .put("http://localhost:3000/api/categories/update-category", formData)
+        .put("/api/categories/update-category", formData)
         .then(() => {
           toast.success("Category updated successfully!");
         })
@@ -75,7 +75,7 @@ export default function Category() {
         });
     } else {
       axios
-        .post("http://localhost:3000/api/categories/create-category", formData)
+        .post("/api/categories/create-category", formData)
         .then(() => {
           toast.success("Category created successfully!");
         })
@@ -94,7 +94,7 @@ export default function Category() {
 
   const refreshCategories = () => {
     axios
-      .get("http://localhost:3000/api/categories/get-all-categories")
+      .get("/api/categories/get-all-categories")
       .then((response) => {
         setCategories(response.data.categories);
       })

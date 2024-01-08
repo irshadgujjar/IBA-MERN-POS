@@ -23,7 +23,7 @@ const InventoryItem = ({ user = {}, onClick }) => {
     const fetchAllUsers = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/user/getallusers"
+          "/api/user/getallusers"
         );
         setUsers(response.data);
       } catch (error) {

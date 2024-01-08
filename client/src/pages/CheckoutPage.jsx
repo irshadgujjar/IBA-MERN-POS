@@ -156,7 +156,7 @@ const CheckoutPage = () => {
   const handleAddInvoice = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/invoices/add-invoice",
+        "/api/invoices/add-invoice",
         {
           customerName: customerData.customerName,
           paymentMode: customerData.paymentMode,
